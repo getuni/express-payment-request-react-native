@@ -21,7 +21,7 @@ export type PaymentItem = {
 };
 
 export type PaymentData = {
-  displayItems: PaymentItem[],
+  displayItems: PaymentItem[];
   total: PaymentItem;
 };
 
@@ -29,14 +29,17 @@ function PaymentRequestProvider({
   uri,
   ...extras
 }: PaymentRequestProviderProps) {
-  const requestPayment = useCallback((paymentData: PaymentData) => {
-    const details = btoa(JSON.stringify(paymentData));
-    const url = `${uri}?details=${details}`;
-    if (Platform.OS === "web") {
-      return Linking.openURL(url);
-    }
-    return WebBrowser.openBrowserAsync(url);
-  }, [uri]);
+  const requestPayment = useCallback(
+    (paymentData: PaymentData) => {
+      const details = btoa(JSON.stringify(paymentData));
+      const url = `${uri}?details=${details}`;
+      if (Platform.OS === "web") {
+        return Linking.openURL(url);
+      }
+      return WebBrowser.openBrowserAsync(url);
+    },
+    [uri]
+  );
   return (
     <PaymentRequestContext.Provider
       value={{
