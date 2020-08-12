@@ -1,5 +1,7 @@
 # express-payment-request-react-native
-💸 The companion React Native (iOS/Android/Web) frontend for express-payment-request. This allows you to accept payments via services such as  [**Apple Pay**](https://www.apple.com/uk/apple-pay/) without linking.
+💸 The companion React Native (iOS/Android/Web) frontend for express-payment-request.
+
+This allows you to accept cross-platform payments using services such as  [**Apple Pay**](https://www.apple.com/uk/apple-pay/) without linking.
 
 ## 🚀 Getting Started
 
@@ -11,7 +13,7 @@ yarn add express-payment-request-react-native
 
 ## ✍️ Example
 
-Below, we show that a the client can define the amount to pay via the [`usePaymentRequest`](./src/hooks/usePaymentRequest.ts) hook. This requires that your app is wrapped within a [**PaymentRequestProvider**](./src/providers/PaymentRequestProvider.ts).
+Below, we show that a the client can define the amount to pay via the [`usePaymentRequest`](./src/hooks/usePaymentRequest.ts) hook. This requires that your app is wrapped within a [**PaymentRequestProvider**](./src/providers/PaymentRequestProvider.tsx).
 
 ```javascript
 import React from "react";
