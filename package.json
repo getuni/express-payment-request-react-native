@@ -1,6 +1,6 @@
 {
   "name": "express-payment-request-react-native",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1-alpha.1",
   "description": "💸 The companion React Native (iOS/Android/Web) frontend for express-payment-request.",
   "main": "dist",
   "repository": "https://github.com/cawfree/express-payment-request-react-native",

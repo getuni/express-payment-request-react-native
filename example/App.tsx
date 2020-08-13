@@ -4,22 +4,25 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import PaymentRequestProvider, { usePaymentRequest, usePaymentResult } from "express-payment-request-react-native";
 
 function Button() {
-  const { requestPayment, paymentResult } = usePaymentRequest("myapp://hello");
+  const { requestPayment, paymentResult } = usePaymentRequest();
   return (
     <TouchableOpacity
       onPress={() =>
-        requestPayment({
-          displayItems: [
-            {
-              label: "A client driven amount!",
+        requestPayment(
+          "myapp://dnc",
+          {
+            displayItems: [
+              {
+                label: "A client driven amount!",
+                amount: { currency: "USD", value: "0.02" },
+              },
+            ],
+            total: {
+              label: "Total due",
               amount: { currency: "USD", value: "0.02" },
             },
-          ],
-          total: {
-            label: "Total due",
-            amount: { currency: "USD", value: "0.02" },
           },
-        })
+        )
       }
     >
       <Text children="Request Payment of $0.02" />
