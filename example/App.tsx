@@ -1,10 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import PaymentRequestProvider, { usePaymentRequest } from "express-payment-request-react-native";
+import PaymentRequestProvider, { usePaymentRequest, usePaymentResult } from "express-payment-request-react-native";
 
 function Button() {
-  const { requestPayment } = usePaymentRequest();
+  const { requestPayment, paymentResult } = usePaymentRequest("myapp://hello");
   return (
     <TouchableOpacity
       onPress={() =>
@@ -23,6 +23,7 @@ function Button() {
       }
     >
       <Text children="Request Payment of $0.02" />
+      <Text children={!!paymentResult ? JSON.stringify(paymentResult) : "You have not paid."} />
     </TouchableOpacity>
   );
 }
