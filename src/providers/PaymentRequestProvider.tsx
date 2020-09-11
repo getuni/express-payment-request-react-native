@@ -4,7 +4,7 @@ import { Platform, Linking } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import {parse as params} from "query-string";
 import parse from "url-parse";
-import {encode as btoa} from "base-64";
+import {encode as btoa, decode as atob} from "base-64";
 
 import { PaymentRequestContext } from "../contexts";
 
@@ -58,7 +58,12 @@ function PaymentRequestProvider({
           return undefined;
         },
       )
-      .catch(error => updateState(() => ({ data: null, error }))),
+      .catch(
+        (error) => {
+          console.error(error);
+          return Promise.reject(error);
+        },
+      ),
     [setPaymentResult],
   );
 
