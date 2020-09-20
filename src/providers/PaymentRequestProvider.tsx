@@ -51,7 +51,17 @@ function PaymentRequestProvider({
                   return Promise
                     .resolve()
                     .then(() => JSON.parse(atob(paymentResult)))
-                    .then(setPaymentResult);
+                    .then(
+                      (paymentResult) => {
+                        const { type } = paymentResult;
+                        if (type === "payment-cancelled") {
+                          console.warn(`Use cancelled payment.`);
+                          /* browser is dismissed; no payment occurred */
+                          return;
+                        }
+                        return setPaymentResult(paymentResult);
+                      },
+                    );
                 }
               });
           }
