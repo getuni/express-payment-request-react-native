@@ -1,8 +1,11 @@
 import * as React from "react";
 
+const defaultErrorThunk = () => () => Promise.reject(new Error("You may have forgotten to wrap your application within a <PaymentRequestProvider />."));
+
 export const defaultContext = Object.freeze({
   uri: undefined,
-  requestPayment: () => Promise.reject(new Error("You may have forgotten to wrap your application within a <PaymentRequestProvider />.")),
+  requestPayment: defaultErrorThunk(),
+  clear: defaultErrorThunk(),
 });
 
 const PaymentRequestContext = React.createContext(defaultContext);

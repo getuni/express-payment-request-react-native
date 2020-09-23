@@ -21,7 +21,7 @@ import { TouchableOpacity, Text } from "react-native";
 import PaymentRequestProvider, { usePaymentRequest } from "express-payment-request-react-native";
 
 function Button() {
-  const { requestPayment } = usePaymentRequest();
+  const { requestPayment, clear } = usePaymentRequest();
   return (
     <TouchableOpacity
       onPress={() =>

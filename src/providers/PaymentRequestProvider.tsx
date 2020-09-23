@@ -104,14 +104,16 @@ function PaymentRequestProvider({
     [uri]
   );
 
+  const clear = useCallback(async () => setPaymentResult(null), [setPaymentResult]);
+
   return (
     <PaymentRequestContext.Provider
       value={{
         ...PaymentRequestContext.defaultContext,
         uri,
         requestPayment,
-        // TODO: needs a clear result too
         paymentResult,
+        clear,
       }}
       {...extras}
     />
