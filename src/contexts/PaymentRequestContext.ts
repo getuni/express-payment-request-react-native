@@ -5,7 +5,7 @@ const defaultErrorThunk = () => () => Promise.reject(new Error("You may have for
 export const defaultContext = Object.freeze({
   uri: undefined,
   requestPayment: defaultErrorThunk(),
-  clear: defaultErrorThunk(),
+  clearPaymentRequest: defaultErrorThunk(),
 });
 
 const PaymentRequestContext = React.createContext(defaultContext);

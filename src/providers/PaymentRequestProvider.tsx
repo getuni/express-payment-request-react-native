@@ -104,7 +104,7 @@ function PaymentRequestProvider({
     [uri]
   );
 
-  const clear = useCallback(async () => setPaymentResult(null), [setPaymentResult]);
+  const clearPaymentRequest = useCallback(async () => setPaymentResult(null), [setPaymentResult]);
 
   return (
     <PaymentRequestContext.Provider
@@ -113,7 +113,7 @@ function PaymentRequestProvider({
         uri,
         requestPayment,
         paymentResult,
-        clear,
+        clearPaymentRequest,
       }}
       {...extras}
     />

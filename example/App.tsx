@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import PaymentRequestProvider, { usePaymentRequest, usePaymentResult } from "express-payment-request-react-native";
 
 function Button() {
-  const { requestPayment, paymentResult, clear } = usePaymentRequest();
+  const { requestPayment, paymentResult, clearPaymentRequest } = usePaymentRequest();
   return (
     <TouchableOpacity
       onPress={() =>
@@ -28,7 +28,7 @@ function Button() {
       <Text children="Request Payment of $0.02" />
       <Text children={!!paymentResult ? JSON.stringify(paymentResult) : "You have not paid."} />
       {!!paymentResult && (
-        <TouchableOpacity onPress={clear}>
+        <TouchableOpacity onPress={clearPaymentRequest}>
           <Text children="Clear Result" />
         </TouchableOpacity>
       )}
